@@ -10,7 +10,7 @@ class Shop:
     def print_receipt(self, customer_name: str, cart: dict) -> float:
         total = 0
         now = datetime.datetime.now()
-        print(f"\nDate: {now.strftime("%d/%m/%Y %H:%M:%S")}")
+        print(f'\nDate: {now.strftime("%d/%m/%Y %H:%M:%S")}')  # noqa
         print(f"Thanks, {customer_name}, for your purchase!")
         print("You have bought:")
         for product, quantity in cart.items():
