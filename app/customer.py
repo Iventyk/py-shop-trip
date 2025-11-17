@@ -35,16 +35,19 @@ class Customer:
 
         return fuel_expense + products_cost
 
-    def go_to_shop(self, shop: Shop, fuel_price: float) -> None:
+    def go_to_shop(
+            self,
+            shop: Shop,
+            fuel_price: float,
+            trip_cost: float
+    ) -> None:
         print(f"{self.name} rides to {shop.name}")
         home_location = self.location.copy()
-        distance = self.distance_to(shop.location)
         self.location = shop.location.copy()
 
-        spent = shop.print_receipt(self.name, self.product_cart)
+        shop.print_receipt(self.name, self.product_cart)
 
-        total_trip_cost = spent + self.car.fuel_cost(distance * 2, fuel_price)
-        self.money -= total_trip_cost
+        self.money -= trip_cost
         print(f"{self.name} rides home")
         self.location = home_location
-        print(f"{self.name} now has {self.money:.2f} dollars")  # noqa
+        print(f"{self.name} now has {self.money:.2f} dollars")  # noqa: E231

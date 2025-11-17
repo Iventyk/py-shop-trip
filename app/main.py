@@ -37,7 +37,7 @@ def shop_trip() -> None:
         costs.sort(key=lambda x: x[1])
         for shop, cost in costs:
             if cost <= customer.money:
-                customer.go_to_shop(shop, fuel_price)
+                customer.go_to_shop(shop, fuel_price, cost)
                 break
         else:
             print(f"{customer.name} doesn't have enough money "
